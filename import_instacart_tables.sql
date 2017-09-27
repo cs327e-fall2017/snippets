@@ -1,6 +1,6 @@
 /* instructions: 
 
-1) download the full instacart dataset from: http://cs327e-fall2017-imdb.s3.amazonaws.com/postgres/instacart_full.zip
+1) download the full instacart dataset from: http://cs327e-fall2017-instacart.s3.amazonaws.com/instacart_full.zip
 
 2) unzip instacart_full.zip
 
