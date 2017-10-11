@@ -40,7 +40,10 @@ create table Order_Products(
 	product_id int,
 	add_to_cart_order int,
 	reordered_by_user boolean,
-	primary key(order_id, product_id),
-	foreign key(order_id) references Orders(order_id),
-	foreign key(product_id) references Products(product_id)
+	primary key(order_id, product_id)
 );
+
+/* To speed up the load, first run the copy command and then add foreign keys to the Order_Products table */
+
+alter table Order_Products add foreign key(order_id) references Orders(order_id);
+alter table Order_Products add foreign key(product_id) references Products(product_id);
