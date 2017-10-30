@@ -11,11 +11,14 @@ links_file = "s3a://" + s3_bucket + "/movielens/links.csv" # dataset for milesto
 # global variable sc = Spark Context
 sc = SparkContext()
 
-rds_database = None
-rds_user = None
-rds_password = None
-rds_host = None
-rds_port = None
+# global variables for RDS connection
+rds_config = configparser.ConfigParser()
+rds_config.read(os.path.expanduser("~/config"))
+rds_database = rds_config.get("default", "database") 
+rds_user = rds_config.get("default", "user")
+rds_password = rds_config.get("default", "password")
+rds_host = rds_config.get("default", "host")
+rds_port = rds_config.get("default", "port")
 
 def init():
     # set AWS access key and secret account key
@@ -32,15 +35,6 @@ def init():
     hadoop_conf.set("fs.s3a.access.key", access_id)
     hadoop_conf.set("fs.s3a.secret.key", access_key)
     os.environ['PYSPARK_SUBMIT_ARGS'] = "--packages=org.apache.hadoop:hadoop-aws:2.7.3 pyspark-shell"
-
-    # set RDS credentials and connection string
-    rds_config = configparser.ConfigParser()
-    rds_config.read(os.path.expanduser("~/config"))
-    rds_database = rds_config.get("default", "database") 
-    rds_user = rds_config.get("default", "user")
-    rds_password = rds_config.get("default", "password")
-    rds_host = rds_config.get("default", "host")
-    rds_port = rds_config.get("default", "port")
 
 ################## general utility function ##################################
 
