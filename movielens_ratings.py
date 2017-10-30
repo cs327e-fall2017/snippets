@@ -11,6 +11,12 @@ links_file = "s3a://" + s3_bucket + "/movielens/links.csv" # dataset for milesto
 # global variable sc = Spark Context
 sc = SparkContext()
 
+rds_database = None
+rds_user = None
+rds_password = None
+rds_host = None
+rds_port = None
+
 def init():
     # set AWS access key and secret account key
     cred_config = configparser.ConfigParser()
