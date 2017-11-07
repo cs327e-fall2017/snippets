@@ -114,3 +114,6 @@ def save_to_db(list_of_tuples):
         print "Error in save_to_db: ", e.message
   
 formatted_rdd.foreachPartition(save_to_db)
+
+# free up resources
+sc.stop()
