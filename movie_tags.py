@@ -52,12 +52,12 @@ def parse_line(line):
   return (movie_id, tag)
 
 lines = sc.textFile(tags_file)
-rdd = lines.map(parse_line) # movie_id, tag
-print_rdd(rdd, "movie_tag_pairs")
+rdd_tags = lines.map(parse_line) # movie_id, tag
+print_rdd(rdd_tags, "movie_tag_pairs")
 
 # Add logic for distinct (step 4)
 
-rdd_distinct.cache()
+rdd_distinct_tags.cache()
 
 ################## links file ##################################
 
