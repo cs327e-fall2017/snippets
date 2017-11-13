@@ -52,9 +52,9 @@ def print_rdd(rdd, logfile):
 
 def parse_line(line):
 
-    # add logic to parse line and extract year, title, budget and box office
+    # add logic for parsing and cleaning the fields as specified in step 4 of assignment sheet
     
-    return (release_year, movie_title, budget, box_office)  
+    return (release_year, movie_title, genre, budget, box_office)  
   
 init() 
 base_rdd = sc.textFile(the_numbers_files)
@@ -65,11 +65,12 @@ def save_to_db(list_of_tuples):
   
     conn = psycopg2.connect(database=rds_database, user=rds_user, password=rds_password, host=rds_host, port=rds_port)
     conn.autocommit = True
+    cur = conn.cursor()
     
-    # add logic to look up title_id in database
-    # add logic to write record to database table
-    
-    
+    # add logic to look up the title_id in the database as specified in step 5 of assignment sheet
+    # add logic to write out the financial record to the database as specified in step 5 of assignment sheet
+   
+    cur.close()
     conn.close()
   
   
